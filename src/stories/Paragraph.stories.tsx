@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Paragraph from '../components/Typography/Paragraph';
+import Paragraph from '../app/components/Typography/Paragraph';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

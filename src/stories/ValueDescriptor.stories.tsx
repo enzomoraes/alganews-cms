@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import ValueDescriptor from '../components/ValueDescriptor/ValueDescriptor';
+import ValueDescriptor from '../app/components/ValueDescriptor/ValueDescriptor';
 
 export default {
   title: 'Example/ValueDescriptor',

@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import FieldDescriptor from '../components/FieldDescriptor/FieldDescriptor';
+import FieldDescriptor from '../app/components/FieldDescriptor/FieldDescriptor';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
