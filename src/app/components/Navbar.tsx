@@ -9,7 +9,10 @@ export default function Navbar() {
           <NavLink to='/'>Home</NavLink>
         </Item>
         <Item>
-          <NavLink to='/contato'>Contato</NavLink>
+          <NavLink to='/editores'>Editores</NavLink>
+        </Item>
+        <Item>
+          <NavLink to='/posts/criar'>novo post</NavLink>
         </Item>
       </List>
     </>

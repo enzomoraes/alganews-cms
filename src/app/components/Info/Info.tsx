@@ -1,5 +1,6 @@
 import { mdiInformation } from '@mdi/js';
 import Icon from '@mdi/react';
+import { transparentize } from 'polished';
 import styled from 'styled-components';
 
 export interface InfoProps {
@@ -30,6 +31,7 @@ const InfoWrapper = styled.div`
   justify-content: center;
   background-color: #f3f8fa;
   width: 373px;
+  border: 1px solid ${transparentize(0.9, '#274060')};
 `;
 
 const InfoInnerContent = styled.div`

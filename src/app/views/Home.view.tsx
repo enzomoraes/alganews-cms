@@ -1,8 +1,8 @@
 import usePageTitle from '../../core/hooks/usePageTitle';
-import Chart from '../components/Chart/Chart';
-import Table from '../components/Table/Table';
 import PostsList from '../features/PostsList';
-import UserMetrics from '../features/UserMetrics';
+import UserEarnings from '../features/UserEarnings';
+import UserPerformance from '../features/UserPerformance';
+import UserTopTags from '../features/UserTopTags';
 import DefaultLayout from '../layouts/Default';
 
 export default function Home() {
@@ -10,7 +10,11 @@ export default function Home() {
 
   return (
     <DefaultLayout>
-      <UserMetrics />
+      <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'center', gap: '32px'}}>
+        <UserTopTags />
+        <UserEarnings />
+      </div>
+      <UserPerformance />
       <PostsList />
     </DefaultLayout>
   );
