@@ -9,7 +9,7 @@ export default function UserTopTags() {
 
   useEffect(() => {
     MetricService.getTop3Tags().then(setTopTags);
-  });
+  }, []);
 
   return (
     <UserTopTagsWrapper>
