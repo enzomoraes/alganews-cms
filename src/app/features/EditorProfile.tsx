@@ -1,5 +1,10 @@
 import { transparentize } from 'polished';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { User } from '../../sdk/@types';
+import UserService from '../../sdk/services/User.service';
+import getEditorDescription from '../../sdk/utils/getEditorDescription';
 import FieldDescriptor from '../components/FieldDescriptor/FieldDescriptor';
 import Profile from '../components/Profile';
 import ProgressBar from '../components/ProgressBar/ProgressBar';
@@ -10,36 +15,42 @@ interface EditorProfileProps {
 }
 
 export default function EditorProfile(props: EditorProfileProps) {
-  // throw new Error('Houve um erro ao renderizar o componente EditorProfile')
+  const params = useParams<{ id: string }>();
+  const [editor, setEditor] = useState<User.EditorDetailed>();
+
+  useEffect(() => {
+    UserService.getExistingEditor(Number(params.id)).then(setEditor);
+  }, [params.id]);
+
+  if (!editor) return null;
+
   return (
     <Wrapper>
       <Profile
-        editorId={1}
-        name='Enzo Moraes Pereira'
-        description='Editor há 5 anos'
+        editorId={editor?.id}
+        name={editor.name}
+        description={getEditorDescription(new Date(editor.createdAt))}
+        avatar={editor.avatarUrls.small}
       />
       <hr style={{ border: `1px solid ${transparentize(0.9, '#274060')}` }} />
       <UserData>
         <PersonalInfo>
-          <Biography>
-            Ana Castillo é especialista em recrutamento de desenvolvedores e ama
-            escrever dicas para ajudar os devs a encontrarem a vaga certa para
-            elas. Atualmente tem uma empresa de Recruitment e é redatora no alga
-            content
-          </Biography>
+          <Biography>{editor.bio}</Biography>
           <Skills>
-            <ProgressBar
-              progress={95}
-              theme='primary'
-              title='tech recruiting'
-            />
-            <ProgressBar progress={75} theme='primary' title='coaching' />
-            <ProgressBar progress={44} theme='primary' title='java' />
+            {editor.skills?.map(skill => {
+              return (
+                <ProgressBar
+                  progress={skill.percentage}
+                  theme='primary'
+                  title={skill.name}
+                />
+              );
+            })}
           </Skills>
         </PersonalInfo>
         <ContactInfo>
-          <FieldDescriptor label={'Cidade'} value={'Vila Velha'} />
-          <FieldDescriptor label={'Estado'} value={'Espírito Santo'} />
+          <FieldDescriptor label={'Cidade'} value={editor.location.city} />
+          <FieldDescriptor label={'Estado'} value={editor.location.state} />
           {!props.hidePersonalData && (
             <>
               <FieldDescriptor label={'Telefone'} value={'+55 27 99900-9999'} />

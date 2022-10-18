@@ -6,7 +6,7 @@ function EditorProfileView() {
   return (
     <DefaultLayout>
       <ErrorBoundary>
-        <EditorProfile hidePersonalData />
+        <EditorProfile />
       </ErrorBoundary>
     </DefaultLayout>
   );
