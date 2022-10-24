@@ -37,9 +37,10 @@ export default function EditorProfile(props: EditorProfileProps) {
         <PersonalInfo>
           <Biography>{editor.bio}</Biography>
           <Skills>
-            {editor.skills?.map(skill => {
+            {editor.skills?.map((skill, i) => {
               return (
                 <ProgressBar
+                  key={i}
                   progress={skill.percentage}
                   theme='primary'
                   title={skill.name}
