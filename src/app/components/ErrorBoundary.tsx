@@ -2,7 +2,9 @@ import { transparentize } from 'polished';
 import { Component } from 'react';
 import ErrorDisplay from './ErrorDisplay';
 
-interface Props {}
+interface Props {
+  component?: string;
+}
 
 interface State {
   hasError: boolean;
@@ -29,7 +31,7 @@ class ErrorBoundary extends Component<Props, State> {
             border: `1px solid ${transparentize(0.9, '#274060')}`,
           }}
         >
-          <ErrorDisplay message={this.state.error?.message}></ErrorDisplay>
+          <ErrorDisplay message={this.state.error?.message} title={`Erro ao renderizar ${this.props.component || 'componente'}`}></ErrorDisplay>
         </div>
       );
     }
