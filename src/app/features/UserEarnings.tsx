@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import withBoundary from '../../core/hoc/withBoundary';
 import { User } from '../../sdk/@types';
 import UserService from '../../sdk/services/User.service';
 import ValueDescriptor from '../components/ValueDescriptor/ValueDescriptor';
 
-export default function UserEarnings() {
+function UserEarnings() {
   const [user, setUser] = useState<User.Detailed>();
   const [error, setError] = useState<Error>();
 
@@ -51,3 +52,5 @@ const UserEarningsWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 `;
+
+export default withBoundary(UserEarnings, 'ganhos do usuário')

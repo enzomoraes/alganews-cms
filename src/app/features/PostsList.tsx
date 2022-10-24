@@ -6,11 +6,12 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useMemo } from 'react';
 import { Column, useTable } from 'react-table';
+import withBoundary from '../../core/hoc/withBoundary';
 import { Post } from '../../sdk/@types';
 import PostService from '../../sdk/services/Post.service';
 import Table from '../components/Table/Table';
 
-export default function PostList() {
+function PostList() {
   const [posts, setPosts] = useState<Post.Paginated>();
   const [error, setError] = useState<Error>();
 
@@ -109,3 +110,5 @@ export default function PostList() {
 
   return <Table instance={instance} />;
 }
+
+export default withBoundary(PostList, 'lista de posts')
