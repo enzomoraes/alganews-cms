@@ -1,5 +1,7 @@
 import { transparentize } from 'polished';
 import { createGlobalStyle } from 'styled-components/macro';
+import "react-loading-skeleton/dist/skeleton.css";
+
 
 export default createGlobalStyle`
   * {

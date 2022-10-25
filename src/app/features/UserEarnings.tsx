@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import styled from 'styled-components';
 import withBoundary from '../../core/hoc/withBoundary';
 import { User } from '../../sdk/@types';
@@ -16,7 +17,15 @@ function UserEarnings() {
   }, []);
 
   if (error) throw error;
-  if (!user) return null;
+  if (!user)
+    return (
+      <UserEarningsWrapper style={{height: '123px'}}>
+        <Skeleton width={150} height={40}></Skeleton>
+        <Skeleton width={150} height={40}></Skeleton>
+        <Skeleton width={150} height={40}></Skeleton>
+        <Skeleton width={150} height={40}></Skeleton>
+      </UserEarningsWrapper>
+    );
 
   return (
     <UserEarningsWrapper>
@@ -53,4 +62,4 @@ const UserEarningsWrapper = styled.div`
   gap: 16px;
 `;
 
-export default withBoundary(UserEarnings, 'ganhos do usuário')
+export default withBoundary(UserEarnings, 'ganhos do usuário');

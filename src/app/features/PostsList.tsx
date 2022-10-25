@@ -5,6 +5,7 @@ import parseISO from 'date-fns/parseISO';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useMemo } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import { Column, useTable } from 'react-table';
 import withBoundary from '../../core/hoc/withBoundary';
 import { Post } from '../../sdk/@types';
@@ -27,7 +28,7 @@ function PostList() {
   }, []);
 
   if (error) throw error;
-  
+
   const columns = useMemo<Column<Post.Summary>[]>(
     () => [
       {
@@ -108,7 +109,20 @@ function PostList() {
     columns,
   });
 
+  if (!posts)
+    return (
+      <div>
+        <Skeleton height={32}></Skeleton>
+        <Skeleton height={40}></Skeleton>
+        <Skeleton height={40}></Skeleton>
+        <Skeleton height={40}></Skeleton>
+        <Skeleton height={40}></Skeleton>
+        <Skeleton height={40}></Skeleton>
+        <Skeleton height={40}></Skeleton>
+      </div>
+    );
+
   return <Table instance={instance} />;
 }
 
-export default withBoundary(PostList, 'lista de posts')
+export default withBoundary(PostList, 'lista de posts');

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import withBoundary from '../../core/hoc/withBoundary';
 import transformEditorMonthlyEaningsIntoChartJs from '../../core/utils/transformEditorMonthlyEarningsIntoChartJs';
 import MetricService from '../../sdk/services/Metric.service';
@@ -16,7 +17,12 @@ function UserPerformance() {
   }, []);
 
   if (error) throw error;
-  if (!editorEarnings) return null;
+  if (!editorEarnings)
+    return (
+      <div>
+        <Skeleton height={227}></Skeleton>
+      </div>
+    );
 
   return (
     <Chart
@@ -26,4 +32,4 @@ function UserPerformance() {
   );
 }
 
-export default withBoundary(UserPerformance, 'performance')
+export default withBoundary(UserPerformance, 'performance');
