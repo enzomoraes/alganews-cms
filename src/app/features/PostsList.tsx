@@ -6,12 +6,15 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useMemo } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { NavLink } from 'react-router-dom';
 import { Column, usePagination, useTable } from 'react-table';
 import withBoundary from '../../core/hoc/withBoundary';
+import modal from '../../core/utils/modal';
 import { Post } from '../../sdk/@types';
 import PostService from '../../sdk/services/Post.service';
 import Loading from '../components/Loading';
 import Table from '../components/Table/Table';
+import PostPreview from './PostPreview';
 
 function PostList() {
   const [posts, setPosts] = useState<Post.Paginated>();
@@ -23,7 +26,7 @@ function PostList() {
     setLoading(true);
     PostService.getAllPosts({
       page: page,
-      size: 1,
+      size: 4,
       showAll: 1,
       sort: ['createdAt', 'desc'],
     })
@@ -61,7 +64,17 @@ function PostList() {
               alt={props.row.original.editor.name}
               title={props.row.original.editor.name}
             />
-            {props.value}
+            <NavLink
+              to={`/posts/${props.row.original.editor.id}`}
+              onClick={e => {
+                e.preventDefault();
+                modal({
+                  children: <PostPreview postId={props.row.original.id} />,
+                });
+              }}
+            >
+              {props.row.original.title}
+            </NavLink>
           </div>
         ),
       },
