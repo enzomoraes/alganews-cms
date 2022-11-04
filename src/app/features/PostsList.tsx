@@ -6,26 +6,31 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useMemo } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { Column, useTable } from 'react-table';
+import { Column, usePagination, useTable } from 'react-table';
 import withBoundary from '../../core/hoc/withBoundary';
 import { Post } from '../../sdk/@types';
 import PostService from '../../sdk/services/Post.service';
+import Loading from '../components/Loading';
 import Table from '../components/Table/Table';
 
 function PostList() {
   const [posts, setPosts] = useState<Post.Paginated>();
   const [error, setError] = useState<Error>();
+  const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     PostService.getAllPosts({
-      page: 0,
-      size: 7,
+      page: page,
+      size: 3,
       showAll: 1,
       sort: ['createdAt', 'desc'],
     })
       .then(setPosts)
-      .catch(error => setError(new Error(error.message)));
-  }, []);
+      .catch(error => setError(new Error(error.message)))
+      .finally(() => setLoading(false));
+  }, [page]);
 
   if (error) throw error;
 
@@ -104,10 +109,16 @@ function PostList() {
     []
   );
 
-  const instance = useTable<Post.Summary>({
-    data: posts?.content || [],
-    columns,
-  });
+  const instance = useTable<Post.Summary>(
+    {
+      data: posts?.content || [],
+      columns,
+      manualPagination: true,
+      initialState: { pageIndex: 0 },
+      pageCount: posts?.totalPages,
+    },
+    usePagination
+  );
 
   if (!posts)
     return (
@@ -122,7 +133,12 @@ function PostList() {
       </div>
     );
 
-  return <Table instance={instance} />;
+  return (
+    <>
+      <Loading show={loading} />
+      <Table instance={instance} onPaginate={setPage} />
+    </>
+  );
 }
 
 export default withBoundary(PostList, 'lista de posts');
