@@ -6,6 +6,7 @@ import EditorsListView from './views/EditorsList.view';
 import Home from './views/Home.view';
 import NotFound404 from './views/NotFound404.view';
 import PostCreateView from './views/PostCreate.view';
+import PostEditView from './views/PostEdit.view';
 
 export default function App() {
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function App() {
         <Route path='/editores' element={<EditorsListView />} />
         <Route path='/editores/:id' element={<EditorProfileView />} />
         <Route path='/posts/criar' element={<PostCreateView />} />
+        <Route path='/posts/editar/:id' element={<PostEditView />} />
         <Route path='*' element={<NotFound404 />} />
       </Routes>
     </BrowserRouter>
