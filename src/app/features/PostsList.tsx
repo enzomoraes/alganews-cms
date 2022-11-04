@@ -2,17 +2,15 @@ import { mdiOpenInNew } from '@mdi/js';
 import Icon from '@mdi/react';
 import format from 'date-fns/format';
 import parseISO from 'date-fns/parseISO';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { NavLink } from 'react-router-dom';
 import { Column, usePagination, useTable } from 'react-table';
 import withBoundary from '../../core/hoc/withBoundary';
 import modal from '../../core/utils/modal';
 import { Post } from '../../sdk/@types';
 import PostService from '../../sdk/services/Post.service';
 import Loading from '../components/Loading';
+import PostTitleAnchor from '../components/PostTitleAnchor';
 import Table from '../components/Table/Table';
 import PostPreview from './PostPreview';
 
@@ -55,6 +53,7 @@ function PostList() {
               display: 'flex',
               gap: 8,
               alignItems: 'center',
+              maxWidth: 270,
             }}
           >
             <img
@@ -64,8 +63,9 @@ function PostList() {
               alt={props.row.original.editor.name}
               title={props.row.original.editor.name}
             />
-            <NavLink
-              to={`/posts/${props.row.original.editor.id}`}
+            <PostTitleAnchor
+              title={props.value}
+              href={`/posts/${props.row.original.editor.id}`}
               onClick={e => {
                 e.preventDefault();
                 modal({
@@ -74,7 +74,7 @@ function PostList() {
               }}
             >
               {props.row.original.title}
-            </NavLink>
+            </PostTitleAnchor>
           </div>
         ),
       },
