@@ -4,7 +4,6 @@ import { transparentize } from 'polished';
 import { useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import { TableInstance } from 'react-table';
-import Button from '../Button/Button';
 import NoData from '../NoData/NoData';
 import * as T from './Table.styles';
 

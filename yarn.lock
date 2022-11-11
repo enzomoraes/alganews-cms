@@ -4280,15 +4280,6 @@ axios@^0.27.2:
     follow-redirects "^1.14.9"
     form-data "^4.0.0"
 
-axios@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.1.3.tgz#8274250dada2edf53814ed7db644b9c2866c1e35"
-  integrity sha512-00tXVRwKx/FZr/IDVFt4C+f9FYairX517WoGCL6dpOntqLkZofjhu43F/Xl44UOpqa+9sLFDrG/XAnFsUYgkDA==
-  dependencies:
-    follow-redirects "^1.15.0"
-    form-data "^4.0.0"
-    proxy-from-env "^1.1.0"
-
 axobject-query@^2.2.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/axobject-query/-/axobject-query-2.2.0.tgz"
@@ -6444,12 +6435,12 @@ entities@~3.0.1:
   resolved "https://registry.yarnpkg.com/entities/-/entities-3.0.1.tgz#2b887ca62585e96db3903482d336c1006c3001d4"
   integrity sha512-WiyBqoomrwMdFG1e0kqvASYfnlb0lp8M5o5Fw2OFq1hNZxxcNk8Ik0Xm7LxzBhuidnZB/UtBqVCgUz3kBOP51Q==
 
-enzomoraes-alganews-sdk@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/enzomoraes-alganews-sdk/-/enzomoraes-alganews-sdk-2.5.0.tgz#b8a58541b7bfde879eb289530fe5f861e69aa10d"
-  integrity sha512-x/B9wxZCalgbJVMn5NWaAC78N8D3BX40fbXzC9Q2SyJtWASz+y9VdtcaQFHKUliqqF6HSSN7FD84s/oHNt70ZQ==
+enzomoraes-alganews-sdk@2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/enzomoraes-alganews-sdk/-/enzomoraes-alganews-sdk-2.7.0.tgz#0efb24e7e37f73658e101e2c986afc9fbc9221ac"
+  integrity sha512-a6j5aqzx97MBIFVoC/PI7OeWu4QGp7VK+ZFb+RDZ6LtbHaUWtU/fB1ks0XH8ho64SUKuZU/u3OOSJitPxkbXoA==
   dependencies:
-    axios "^1.1.3"
+    axios "^0.27.2"
     date-fns "^2.29.3"
     uuid "^9.0.0"
 
@@ -7243,7 +7234,7 @@ follow-redirects@^1.0.0:
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.7.tgz"
   integrity sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==
 
-follow-redirects@^1.14.9, follow-redirects@^1.15.0:
+follow-redirects@^1.14.9:
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -11505,11 +11496,6 @@ proxy-addr@~2.0.7:
   dependencies:
     forwarded "0.2.0"
     ipaddr.js "1.9.1"
-
-proxy-from-env@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
-  integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
 prr@~1.0.1:
   version "1.0.1"

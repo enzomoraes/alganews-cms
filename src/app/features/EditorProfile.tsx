@@ -1,10 +1,8 @@
+import { getEditorDescription, User, UserService } from 'enzomoraes-alganews-sdk';
 import { transparentize } from 'polished';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { User } from '../../sdk/@types';
-import UserService from '../../sdk/services/User.service';
-import getEditorDescription from '../../sdk/utils/getEditorDescription';
 import FieldDescriptor from '../components/FieldDescriptor/FieldDescriptor';
 import Profile from '../components/Profile';
 import ProgressBar from '../components/ProgressBar/ProgressBar';

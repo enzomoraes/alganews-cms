@@ -17,7 +17,7 @@
     "axios": "^0.27.2",
     "chart.js": "2.9.4",
     "date-fns": "^2.29.3",
-    "enzomoraes-alganews-sdk": "^2.5.0",
+    "enzomoraes-alganews-sdk": "2.7.0",
     "markdown-it": "^13.0.1",
     "polished": "^4.1.3",
     "react": "^18.1.0",
