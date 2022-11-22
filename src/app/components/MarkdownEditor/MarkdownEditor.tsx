@@ -1,7 +1,7 @@
+import { FileService } from 'enzomoraes-alganews-sdk';
 import MarkdownIt from 'markdown-it';
 import MdEditor, { Plugins } from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
-import FileService from '../../../sdk/services/File.service';
 
 MdEditor.unuse(Plugins.FontUnderline);
 

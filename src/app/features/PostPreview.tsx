@@ -1,11 +1,10 @@
+import { Post, PostService } from 'enzomoraes-alganews-sdk';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import withBoundary from '../../core/hoc/withBoundary';
 import confirm from '../../core/utils/confirm';
 import info from '../../core/utils/info';
 import modal from '../../core/utils/modal';
-import { Post } from '../../sdk/@types';
-import PostService from '../../sdk/services/Post.service';
 import Button from '../components/Button/Button';
 import Loading from '../components/Loading';
 import MarkdownEditor from '../components/MarkdownEditor';

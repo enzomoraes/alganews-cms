@@ -1,9 +1,8 @@
+import { User, UserService } from 'enzomoraes-alganews-sdk';
 import { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import styled from 'styled-components';
 import withBoundary from '../../core/hoc/withBoundary';
-import { User } from '../../sdk/@types';
-import UserService from '../../sdk/services/User.service';
 import ValueDescriptor from '../components/ValueDescriptor/ValueDescriptor';
 
 function UserEarnings() {

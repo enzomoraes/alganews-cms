@@ -6435,10 +6435,10 @@ entities@~3.0.1:
   resolved "https://registry.yarnpkg.com/entities/-/entities-3.0.1.tgz#2b887ca62585e96db3903482d336c1006c3001d4"
   integrity sha512-WiyBqoomrwMdFG1e0kqvASYfnlb0lp8M5o5Fw2OFq1hNZxxcNk8Ik0Xm7LxzBhuidnZB/UtBqVCgUz3kBOP51Q==
 
-enzomoraes-alganews-sdk@2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/enzomoraes-alganews-sdk/-/enzomoraes-alganews-sdk-2.7.0.tgz#0efb24e7e37f73658e101e2c986afc9fbc9221ac"
-  integrity sha512-a6j5aqzx97MBIFVoC/PI7OeWu4QGp7VK+ZFb+RDZ6LtbHaUWtU/fB1ks0XH8ho64SUKuZU/u3OOSJitPxkbXoA==
+enzomoraes-alganews-sdk@2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/enzomoraes-alganews-sdk/-/enzomoraes-alganews-sdk-2.9.0.tgz#9cbf899e337d6db531e8b5ac9c1b8d9d1f37d0ad"
+  integrity sha512-newjsblF2wxwjztWr42H4WBUCPD1qfi7/NepBkYoD9JQ3Uo81fMC5gleTzjxusZuzq9vo7/dzZfWelZmob4O1w==
   dependencies:
     axios "^0.27.2"
     date-fns "^2.29.3"

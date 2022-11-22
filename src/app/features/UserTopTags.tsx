@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import styled from 'styled-components';
 import withBoundary from '../../core/hoc/withBoundary';
-import { Metric } from '../../sdk/@types';
-import MetricService from '../../sdk/services/Metric.service';
+import { Metric, MetricService } from 'enzomoraes-alganews-sdk';
 import CircleChart from '../components/CircleChart';
 
 function UserTopTags() {

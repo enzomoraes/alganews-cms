@@ -1,4 +1,8 @@
-import { getEditorDescription, User, UserService } from 'enzomoraes-alganews-sdk';
+import {
+  getEditorDescription,
+  User,
+  UserService,
+} from 'enzomoraes-alganews-sdk';
 import { transparentize } from 'polished';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
