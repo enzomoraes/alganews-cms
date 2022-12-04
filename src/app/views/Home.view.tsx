@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import usePageTitle from '../../core/hooks/usePageTitle';
-import selectPostsCounter from '../../core/selectors/selectPostsCounter';
-import { AppDispatch } from '../../core/store';
-import { fetchPosts, increment } from '../../core/store/Post.slice';
+import usePosts from '../../core/hooks/usePosts';
 import PostsList from '../features/PostsList';
 import UserEarnings from '../features/UserEarnings';
 import UserPerformance from '../features/UserPerformance';
@@ -12,17 +9,14 @@ import DefaultLayout from '../layouts/Default';
 
 export default function Home() {
   usePageTitle('Home');
-  const dispatch: AppDispatch = useDispatch();
-  const counter = useSelector(selectPostsCounter);
+  const { fetchPosts } = usePosts();
 
   useEffect(() => {
-    dispatch(fetchPosts({ page: 0 }));
-    dispatch(increment())
-  }, [dispatch]);
+    fetchPosts({ page: 0 });
+  }, [fetchPosts]);
 
   return (
     <DefaultLayout>
-      {counter}
       <div
         style={{
           display: 'grid',

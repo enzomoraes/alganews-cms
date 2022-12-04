@@ -10,7 +10,6 @@ import { Post, PostService } from 'enzomoraes-alganews-sdk';
 
 interface PostSliceState {
   paginated?: Post.Paginated;
-  counter: number;
   fetching: boolean;
 }
 
@@ -22,7 +21,6 @@ const initialState: PostSliceState = {
     totalPages: 1,
     content: [],
   },
-  counter: 0,
   fetching: false,
 };
 
@@ -41,9 +39,6 @@ export const postReducer = createReducer(initialState, builder => {
   const fullfilledActions = isFulfilled(fetchPosts);
   const rejectedActions = isRejected(fetchPosts);
   builder
-    .addCase(increment, state => {
-      state.counter++;
-    })
     .addCase(fetchPosts.fulfilled, (state, action) => {
       state.paginated = action.payload;
     })
