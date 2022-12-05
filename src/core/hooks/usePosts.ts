@@ -5,6 +5,7 @@ import selectPaginatedPosts from '../selectors/selectPaginatedPosts';
 import selectPostsFetching from '../selectors/selectPostsFetching';
 import { AppDispatch } from '../store';
 import * as PostActions from '../store/Post.slice';
+
 export default function usePosts() {
   const dispatch: AppDispatch = useDispatch();
 

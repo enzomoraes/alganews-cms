@@ -1,21 +1,20 @@
 import {
-  getEditorDescription,
-  User,
-  UserService,
+  getEditorDescription
 } from 'enzomoraes-alganews-sdk';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import styled from 'styled-components';
+import useEditors from '../../core/hooks/useEditors';
 import Profile from '../components/Profile';
 
 export default function EditorsList() {
-  const [editors, setEditors] = useState<User.EditorSummary[]>();
+  const { editorsList, loading, fetchAllEditors } = useEditors();
 
   useEffect(() => {
-    UserService.getAllEditors().then(setEditors);
-  }, []);
+    fetchAllEditors();
+  }, [fetchAllEditors]);
 
-  if (!editors)
+  if (!editorsList.length)
     return (
       <EditorsListWrapper>
         <Skeleton width={328} height={82}></Skeleton>
@@ -26,7 +25,7 @@ export default function EditorsList() {
 
   return (
     <EditorsListWrapper>
-      {editors.map(editor => {
+      {editorsList.map(editor => {
         return (
           <Profile
             avatar={editor.avatarUrls.small}
@@ -37,6 +36,7 @@ export default function EditorsList() {
           />
         );
       })}
+      {loading ? 'Buscando mais informações' : null}
     </EditorsListWrapper>
   );
 }

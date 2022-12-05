@@ -1,23 +1,17 @@
-import { MetricService } from 'enzomoraes-alganews-sdk';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import withBoundary from '../../core/hoc/withBoundary';
-import transformEditorMonthlyEaningsIntoChartJs from '../../core/utils/transformEditorMonthlyEarningsIntoChartJs';
-import Chart, { ChartProps } from '../components/Chart/Chart';
+import usePerformance from '../../core/hooks/usePerformance';
+import Chart from '../components/Chart/Chart';
 
 function UserPerformance() {
-  const [editorEarnings, setEditorEarnings] = useState<ChartProps['data']>();
-  const [error, setError] = useState<Error>();
+  const { performance, fetchPerformance } = usePerformance();
 
   useEffect(() => {
-    MetricService.getEditorMonthlyEarnings()
-      .then(transformEditorMonthlyEaningsIntoChartJs)
-      .then(setEditorEarnings)
-      .catch(error => setError(new Error(error.message)));
-  }, []);
+    fetchPerformance();
+  }, [fetchPerformance]);
 
-  if (error) throw error;
-  if (!editorEarnings)
+  if (!performance)
     return (
       <div>
         <Skeleton height={227}></Skeleton>
@@ -27,7 +21,7 @@ function UserPerformance() {
   return (
     <Chart
       title='Média de performance nos últimos 12 meses'
-      data={editorEarnings}
+      data={performance}
     ></Chart>
   );
 }

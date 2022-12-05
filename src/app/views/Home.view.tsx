@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
 import usePageTitle from '../../core/hooks/usePageTitle';
-import usePosts from '../../core/hooks/usePosts';
 import PostsList from '../features/PostsList';
 import UserEarnings from '../features/UserEarnings';
 import UserPerformance from '../features/UserPerformance';
@@ -9,11 +7,6 @@ import DefaultLayout from '../layouts/Default';
 
 export default function Home() {
   usePageTitle('Home');
-  const { fetchPosts } = usePosts();
-
-  useEffect(() => {
-    fetchPosts({ page: 0 });
-  }, [fetchPosts]);
 
   return (
     <DefaultLayout>

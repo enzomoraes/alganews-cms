@@ -1,22 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import styled from 'styled-components';
 import withBoundary from '../../core/hoc/withBoundary';
-import { Metric, MetricService } from 'enzomoraes-alganews-sdk';
+import useTopTags from '../../core/hooks/useTopTags';
 import CircleChart from '../components/CircleChart';
 
 function UserTopTags() {
-  const [topTags, setTopTags] = useState<Metric.EditorTagRatio>();
-  const [error, setError] = useState<Error>();
+  const { topTags, fetchTopTags } = useTopTags();
 
   useEffect(() => {
-    MetricService.getTop3Tags()
-      .then(setTopTags)
-      .catch(error => setError(new Error(error.message)));
-  }, []);
+    fetchTopTags();
+  }, [fetchTopTags]);
 
-  if (error) throw error;
-  if (!topTags)
+  if (topTags?.length)
     return (
       <UserTopTagsWrapper>
         <Skeleton height={88} circle={true}></Skeleton>

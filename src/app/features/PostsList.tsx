@@ -2,11 +2,12 @@ import { mdiOpenInNew } from '@mdi/js';
 import Icon from '@mdi/react';
 import format from 'date-fns/format';
 import parseISO from 'date-fns/parseISO';
-import { Post, PostService } from 'enzomoraes-alganews-sdk';
+import { Post } from 'enzomoraes-alganews-sdk';
 import { useEffect, useMemo, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { Column, usePagination, useTable } from 'react-table';
 import withBoundary from '../../core/hoc/withBoundary';
+import usePosts from '../../core/hooks/usePosts';
 import modal from '../../core/utils/modal';
 import Loading from '../components/Loading';
 import PostTitleAnchor from '../components/PostTitleAnchor';
@@ -14,25 +15,17 @@ import Table from '../components/Table/Table';
 import PostPreview from './PostPreview';
 
 function PostList() {
-  const [posts, setPosts] = useState<Post.Paginated>();
-  const [error, setError] = useState<Error>();
   const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const { paginatedPosts, loading, fetchPosts } = usePosts();
 
   useEffect(() => {
-    setLoading(true);
-    PostService.getAllPosts({
-      page: page,
+    fetchPosts({
+      page,
       size: 4,
       showAll: 1,
       sort: ['createdAt', 'desc'],
-    })
-      .then(setPosts)
-      .catch(error => setError(new Error(error.message)))
-      .finally(() => setLoading(false));
-  }, [page]);
-
-  if (error) throw error;
+    });
+  }, [fetchPosts, page]);
 
   const columns = useMemo<Column<Post.Summary>[]>(
     () => [
@@ -123,16 +116,16 @@ function PostList() {
 
   const instance = useTable<Post.Summary>(
     {
-      data: posts?.content || [],
+      data: paginatedPosts?.content || [],
       columns,
       manualPagination: true,
       initialState: { pageIndex: 0 },
-      pageCount: posts?.totalPages,
+      pageCount: paginatedPosts?.totalPages,
     },
     usePagination
   );
 
-  if (!posts)
+  if (!paginatedPosts)
     return (
       <div>
         <Skeleton height={32}></Skeleton>

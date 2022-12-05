@@ -1,12 +1,11 @@
 import {
-  getEditorDescription,
-  User,
-  UserService,
+  getEditorDescription
 } from 'enzomoraes-alganews-sdk';
 import { transparentize } from 'polished';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import useSingleEditor from '../../core/hooks/useSingleEditor';
 import FieldDescriptor from '../components/FieldDescriptor/FieldDescriptor';
 import Profile from '../components/Profile';
 import ProgressBar from '../components/ProgressBar/ProgressBar';
@@ -18,11 +17,11 @@ interface EditorProfileProps {
 
 export default function EditorProfile(props: EditorProfileProps) {
   const params = useParams<{ id: string }>();
-  const [editor, setEditor] = useState<User.EditorDetailed>();
+  const { editor, fetchEditor } = useSingleEditor();
 
   useEffect(() => {
-    UserService.getExistingEditor(Number(params.id)).then(setEditor);
-  }, [params.id]);
+    fetchEditor(Number(params.id));
+  }, [params.id, fetchEditor]);
 
   if (!editor) return null;
 
