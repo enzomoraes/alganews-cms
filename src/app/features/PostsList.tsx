@@ -32,7 +32,11 @@ function PostList() {
       {
         Header: '',
         accessor: 'id', // accessor is the "key" in the data
-        Cell: () => <Icon path={mdiOpenInNew} size={'14px'} color={'#09f'} />,
+        Cell: () => (
+          <div style={{ paddingLeft: 8, width: '16px' }}>
+            <Icon path={mdiOpenInNew} size={'16px'} color={'#09f'} />
+          </div>
+        ),
       },
       {
         Header: () => <div style={{ textAlign: 'left' }}>Título</div>,
@@ -73,22 +77,6 @@ function PostList() {
       {
         Header: () => <div style={{ textAlign: 'right' }}>Criação</div>,
         accessor: 'createdAt',
-        Cell: props => (
-          <div
-            style={{
-              textAlign: 'right',
-              fontFamily: '"Roboto mono", monospace',
-            }}
-          >
-            {format(parseISO(props.value), 'dd/MM/yyyy')}
-          </div>
-        ),
-      },
-      {
-        Header: () => (
-          <div style={{ textAlign: 'right' }}>Última atualização</div>
-        ),
-        accessor: 'updatedAt',
         Cell: props => (
           <div
             style={{

@@ -27,34 +27,48 @@ export const BodyCell = styled.td`
 export const TablePagination = styled.div`
   display: flex;
   gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
 
   ul {
     display: flex;
     list-style: none;
-    gap: 8px;
+    gap: 4px;
 
     li {
+      &.selected {
+        a {
+          background-color: rgb(0, 153, 255);
+          color: rgb(243, 248, 250);
+          pointer-events: none;
+        }
+      }
       a {
-        text-align: center;
+        transition: 0.25s ease;
+        outline: none;
+        background-color: rgb(243, 248, 250);
+        color: rgb(39, 64, 96);
+        border: 1px solid rgba(39, 64, 96, 0.1);
+        min-width: 32px;
+        height: 32px;
+        padding: 0px 6px;
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
         cursor: pointer;
-        background-color: #09f;
-        color: #fff;
-        padding: 4px 8px;
-        display: block;
-
-        transition: .25s ease;
-
-        &:hover, &:focus {
-          box-shadow: 0 6px 6px rgba(0,0,0,.15);
-          transform: translate(-3px);
+        &:hover,
+        &:focus {
+          box-shadow: 0 6px 6px rgba(0, 0, 0, 0.15);
+          transform: translateY(-3px);
         }
       }
 
-      &.selected a,
       &.disabled a {
-        background-color: #ccc;
-        color: #222;
         pointer-events: none;
+        opacity: 0.5;
+        outline: none;
       }
     }
   }

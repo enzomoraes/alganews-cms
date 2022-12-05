@@ -75,7 +75,7 @@ export default function Table<T extends Object>({
           onPageChange={page => {
             gotoPage(page.selected);
           }}
-          marginPagesDisplayed={2}
+          marginPagesDisplayed={1}
           pageRangeDisplayed={4}
           nextLabel={<Icon path={mdiChevronRight} size={'16px'} />}
           previousLabel={<Icon path={mdiChevronLeft} size={'16px'} />}

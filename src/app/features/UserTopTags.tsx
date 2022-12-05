@@ -12,7 +12,7 @@ function UserTopTags() {
     fetchTopTags();
   }, [fetchTopTags]);
 
-  if (topTags?.length)
+  if (!topTags?.length)
     return (
       <UserTopTagsWrapper>
         <Skeleton height={88} circle={true}></Skeleton>
